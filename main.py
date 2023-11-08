@@ -1,8 +1,13 @@
 from telethon import TelegramClient
+from telethon.sessions import StringSession
 
-SESSION_FILE = 'eq_alert.session'
-TELEGRAM_API_ID = 123456
-TELEGRAM_API_HASH = "1234567890abcdef1234567890abcdef"
+TELEGRAM_API_ID = input("Enter your Telegram API ID: ")
+TELEGRAM_API_HASH = input("Enter your Telegram API HASH: ")
 
-client = TelegramClient('eq_alert', TELEGRAM_API_ID, TELEGRAM_API_HASH)
+print("")
+
+client = TelegramClient(StringSession(), int(TELEGRAM_API_ID), TELEGRAM_API_HASH)
 client.start()
+
+session = client.session.save()
+print("Here is your Telegram String Session:\n\n" + session)
